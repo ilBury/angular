@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, } from '@angular/core';
 import { Task } from '../types/task.type';
 
 @Component({
@@ -9,8 +9,8 @@ import { Task } from '../types/task.type';
 export class TodoTaskComponent {
   @Input() task: Task;
 
-  @Output() remove: EventEmitter<number> = new EventEmitter<number>(); 
-  @Output() edit: EventEmitter<number> = new EventEmitter<number>(); 
+  @Output() remove: EventEmitter<number> = new EventEmitter<number>();
+  @Output() edit: EventEmitter<number> = new EventEmitter<number>();
 
   removeTask(): void {
     this.remove.emit(this.task.id);
@@ -22,8 +22,5 @@ export class TodoTaskComponent {
 
   complete(checked: boolean): void {
     this.task.completed = checked;
-  } 
-
-
-
+  }
 }

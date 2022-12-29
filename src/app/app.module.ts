@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { TodoTaskComponent } from './todo-task/todo-task.component'
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { TodoTaskComponent } from './todo-task/todo-task.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { TaskFormDialogComponent } from './task-form-dialog/task-form-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatOptionModule } from "@angular/material/core";
+import {MatExpansionModule} from '@angular/material/expansion';
+import { DelSpaceDirective } from './directives/del-space.directive';
 
 
 @NgModule({
@@ -21,20 +25,24 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     TodoListComponent,
     TodoTaskComponent,
-    TaskFormDialogComponent
+    TaskFormDialogComponent,
+    DelSpaceDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    ReactiveFormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
