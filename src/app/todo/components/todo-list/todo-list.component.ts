@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Task } from "../types/task.type";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { FormControl, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { TaskFormDialogComponent } from "../task-form-dialog/task-form-dialog.component";
-import { TaskService } from '../services/task.service';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../types/task.type';
 
 @Component({
   selector: 'app-todo-list',

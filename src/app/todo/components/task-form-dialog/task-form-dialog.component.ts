@@ -1,8 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Task } from '../types/task.type';
-import { TitleValidator } from '../shared/validators/titleValidator';
+import { Task } from '../../types/task.type';
+import { TitleValidator } from '../../shared/validators/titleValidator';
 
 @Component({
   selector: 'app-task-form-dialog',
