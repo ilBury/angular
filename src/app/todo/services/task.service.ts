@@ -17,10 +17,20 @@ export class TaskService {
     return tasksPromise;
   }
 
+ /*  addTasks(result: any): Promise<Task[]> {
+
+  } */
+
+
   getUsers(): Promise<string[]> {
     const usersPromise = new Promise<string[]>((resolve,reject) => {
       resolve(users);
     })
     return usersPromise;
   }
+
+
+
+
+
 }

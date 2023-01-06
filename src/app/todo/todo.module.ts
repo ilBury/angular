@@ -5,7 +5,6 @@ import { TodoTaskComponent } from './components/todo-task/todo-task.component';
 import { TaskFormDialogComponent } from './components/task-form-dialog/task-form-dialog.component';
 import { DelSpaceDirective } from './directives/del-space.directive';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -15,8 +14,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatOptionModule } from "@angular/material/core";
 import {MatExpansionModule} from '@angular/material/expansion';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
+import { TodoRoutingModule } from './todo-routing.module';
 
 
 
@@ -29,10 +27,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
-    AppRoutingModule,
+    TodoRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
