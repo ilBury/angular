@@ -12,7 +12,7 @@ export const tasks: Task[] = [
   {
     id: 1,
     title: 'Task 1',
-    description: '',
+    description: 'descr 1',
     assignee: 'Bob',
     isUrgent: true,
     completed: false
@@ -20,7 +20,7 @@ export const tasks: Task[] = [
   {
     id: 2,
     title: 'Task 2',
-    description: '',
+    description: 'descr 2',
     assignee: 'Alex',
     isUrgent: true,
     completed: false
