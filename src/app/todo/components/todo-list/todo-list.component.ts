@@ -43,21 +43,16 @@ export class TodoListComponent implements OnInit {
       data: { users: this.users },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        this.taskList.push({
-          ...result,
-          id: ++this.lastId,
-          completed: false
-        });
+        this.taskList = await this.taskService.addTasks(result);
       }
     });
   }
 
-  removeTask(taskId: number): void {
+  async removeTask(taskId: number): Promise<void> {
     const taskIndex = this.taskList.findIndex(task => task.id === taskId);
-    this.taskList.splice(taskIndex, 1);
-    document.dispatchEvent;
+    this.taskList = await this.taskService.removeTasks(taskIndex);
   }
 
   editTask(taskId: number): void {
@@ -67,17 +62,12 @@ export class TodoListComponent implements OnInit {
       data: { task, users: this.users },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       if (result) {
         const taskInd = this.taskList.findIndex(task => task.id === taskId);
-        this.taskList.splice(taskInd, 1);
-        this.taskList.push({
-          ...task,
-          ...result,
-        });
+        this.taskList = await this.taskService.editTasks(taskInd, result);
       }
     });
-    document.dispatchEvent;
   }
 
   saveChanges(): void {
