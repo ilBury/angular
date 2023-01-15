@@ -1,10 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { FormControl, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
-import { TaskFormDialogComponent } from "../task-form-dialog/task-form-dialog.component";
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../types/task.type';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,14 +14,15 @@ export class TodoListComponent implements OnInit {
   public taskList: Task[];
   public newTask: string;
   public editing: boolean;
-  private lastId: number = 0;
   private editedTaskId: number;
   private users: string[];
 
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private taskService: TaskService) {
+    private taskService: TaskService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -38,7 +38,8 @@ export class TodoListComponent implements OnInit {
   }
 
   addTask(): void {
-    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
+    this.router.navigate(['task', 'new'], {relativeTo: this.activatedRoute.parent});
+  /*   const dialogRef = this.dialog.open(TaskFormDialogComponent, {
       width: '600px',
       data: { users: this.users },
     });
@@ -47,17 +48,20 @@ export class TodoListComponent implements OnInit {
       if (result) {
         this.taskList = await this.taskService.addTasks(result);
       }
-    });
+    }); */
   }
 
   async removeTask(taskId: number): Promise<void> {
-    const taskIndex = this.taskList.findIndex(task => task.id === taskId);
-    this.taskList = await this.taskService.removeTasks(taskIndex);
+
+    const taskID = this.taskList.find(task => task.id === taskId);
+
+    this.taskList = await this.taskService.removeTasks(taskID.id);
   }
 
   editTask(taskId: number): void {
+    this.router.navigate(['task', taskId], {relativeTo: this.activatedRoute.parent});
     let task = this.taskList.find(task => task.id === taskId);
-    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
+ /*    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
       width: '600px',
       data: { task, users: this.users },
     });
@@ -67,7 +71,7 @@ export class TodoListComponent implements OnInit {
         const taskInd = this.taskList.findIndex(task => task.id === taskId);
         this.taskList = await this.taskService.editTasks(taskInd, result);
       }
-    });
+    }); */
   }
 
   saveChanges(): void {

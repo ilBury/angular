@@ -11,26 +11,28 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    TodoModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSnackBarModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+      CommonModule,
+      AppRoutingModule,
+      BrowserModule,
+      BrowserAnimationsModule,
+      ReactiveFormsModule,
+      TodoModule,
+      MatInputModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatSnackBarModule,
+      SharedModule
+    ]
 })
 export class AppModule { }

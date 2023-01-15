@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatOptionModule } from "@angular/material/core";
 import {MatExpansionModule} from '@angular/material/expansion';
 import { TodoRoutingModule } from './todo-routing.module';
+import { TodoTaskDetailsComponent } from './components/todo-task-details/todo-task-details.component';
 
 
 
@@ -23,7 +24,8 @@ import { TodoRoutingModule } from './todo-routing.module';
     TodoListComponent,
     TodoTaskComponent,
     TaskFormDialogComponent,
-    DelSpaceDirective
+    DelSpaceDirective,
+    TodoTaskDetailsComponent
   ],
   imports: [
     CommonModule,

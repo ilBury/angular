@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { ValidationService } from 'src/app/services/validation.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public form = this.fb.group({
     email: new FormControl<string>(null, [
       Validators.required,
@@ -28,7 +28,10 @@ export class LoginComponent {
     private authServise: AuthService,
     private _snackBar: MatSnackBar,
     private router: Router) {
+  }
 
+  ngOnInit(): void {
+    this.authServise.logout();
   }
 
   async login(): Promise<void> {
