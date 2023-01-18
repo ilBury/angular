@@ -1,0 +1,28 @@
+:host {
+  .dialog-wrapper {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    gap: 8px;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+}

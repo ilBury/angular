@@ -1,10 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { FormControl, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
-import { TaskFormDialogComponent } from "../task-form-dialog/task-form-dialog.component";
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../types/task.type';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -15,14 +14,15 @@ export class TodoListComponent implements OnInit {
   public taskList: Task[];
   public newTask: string;
   public editing: boolean;
-  private lastId: number = 0;
   private editedTaskId: number;
   private users: string[];
 
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private taskService: TaskService) {
+    private taskService: TaskService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -38,46 +38,40 @@ export class TodoListComponent implements OnInit {
   }
 
   addTask(): void {
-    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
+    this.router.navigate(['task', 'new'], {relativeTo: this.activatedRoute.parent});
+  /*   const dialogRef = this.dialog.open(TaskFormDialogComponent, {
       width: '600px',
       data: { users: this.users },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       if (result) {
-        this.taskList.push({
-          ...result,
-          id: ++this.lastId,
-          completed: false
-        });
+        this.taskList = await this.taskService.addTasks(result);
       }
-    });
+    }); */
   }
 
-  removeTask(taskId: number): void {
-    const taskIndex = this.taskList.findIndex(task => task.id === taskId);
-    this.taskList.splice(taskIndex, 1);
-    document.dispatchEvent;
+  async removeTask(taskId: number): Promise<void> {
+
+    const taskID = this.taskList.find(task => task.id === taskId);
+
+    this.taskList = await this.taskService.removeTasks(taskID.id);
   }
 
   editTask(taskId: number): void {
+    this.router.navigate(['task', taskId], {relativeTo: this.activatedRoute.parent});
     let task = this.taskList.find(task => task.id === taskId);
-    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
+ /*    const dialogRef = this.dialog.open(TaskFormDialogComponent, {
       width: '600px',
       data: { task, users: this.users },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       if (result) {
         const taskInd = this.taskList.findIndex(task => task.id === taskId);
-        this.taskList.splice(taskInd, 1);
-        this.taskList.push({
-          ...task,
-          ...result,
-        });
+        this.taskList = await this.taskService.editTasks(taskInd, result);
       }
-    });
-    document.dispatchEvent;
+    }); */
   }
 
   saveChanges(): void {
