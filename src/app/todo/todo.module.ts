@@ -16,6 +16,7 @@ import { MatOptionModule } from "@angular/material/core";
 import {MatExpansionModule} from '@angular/material/expansion';
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoTaskDetailsComponent } from './components/todo-task-details/todo-task-details.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -40,7 +41,8 @@ import { TodoTaskDetailsComponent } from './components/todo-task-details/todo-ta
     MatSelectModule,
     MatFormFieldModule,
     MatOptionModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
   ],
   exports: [],
   providers: []

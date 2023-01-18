@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { TaskService } from '../../services/task.service';
 import { TitleValidator } from '../../shared/validators/titleValidator';
 import { Task } from '../../types/task.type';

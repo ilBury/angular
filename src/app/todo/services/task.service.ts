@@ -9,11 +9,13 @@ export class TaskService {//По-любому с айдишкой некраси
 
   private randomId: number;
   private lastId: number;
+  private max: number = 100;
+  private min: number = 0;
 
   constructor() { }
 
   private checkRepeated(): number {
-    this.randomId = this.getRandomIntNumber(1,100);
+    this.randomId = this.getRandomIntNumber();
     for(let task of tasks) {
       if(Number(task.id) === this.randomId){
         this.checkRepeated();
@@ -24,10 +26,8 @@ export class TaskService {//По-любому с айдишкой некраси
     return this.randomId;
   }
 
-  private getRandomIntNumber(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  private getRandomIntNumber() {
+    return Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
   }
 
   getTasks(): Promise<Task[]> {
@@ -57,7 +57,6 @@ export class TaskService {//По-любому с айдишкой некраси
         id: this.lastId,
         completed: false
       });
-      console.log(tasks);
       resolve(tasks);
     });
     return addTaskPromise;
@@ -72,7 +71,6 @@ export class TaskService {//По-любому с айдишкой некраси
         id: taskID,
         completed: false
       });
-      console.log(tasks);
       resolve(tasks);
     });
     return addTaskPromise;
